@@ -71,7 +71,7 @@ export class NasaSearch extends LitElement {
         source="${item.links[0].href}"
         title="${item.data[0].title}"
         imgAltTesxt="${item.data[0].description}"
-        imgLink="${item.href}"          
+        imgLink="${item.links[0].href}"          
       ></nasa-image>                                                             <!-- imgLink doesn't really work, ask about this -->
       `)}
     </div>

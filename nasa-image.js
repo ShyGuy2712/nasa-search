@@ -50,7 +50,7 @@ export class NasaImage extends LitElement {
   render() {
     return html`
     <div class="image">
-      <a href= ${this.imgLink}>     
+      <a href= ${this.imgLink} target="_blank">     
         <img src="${this.source}" alt=${this.imgAltText} />
       </a>
         <div>${this.title}</div>
