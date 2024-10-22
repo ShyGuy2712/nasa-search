@@ -61,15 +61,18 @@ export class NasaSearch extends LitElement {
     <details open>
       <summary>Search inputs</summary>
       <div>
-        <input id="input" placeholder="Search NASA images" @input="${this.inputChanged}" />
+        <input id="input" placeholder="Search NASA images" @input="${this.inputChanged}" />   <!-- Add a button here, which calls "inputChanged" so NASA doesnt ban us -->
       </div>
     </details>
     <div class="results">
       ${this.items.map((item, index) => html`
+      <!-- gets/returns img info to nasa-image.js -->
       <nasa-image
         source="${item.links[0].href}"
         title="${item.data[0].title}"
-      ></nasa-image>
+        imgAltTesxt="${item.data[0].description}"
+        imgLink="${item.href}"          
+      ></nasa-image>                                                             <!-- imgLink doesn't really work, ask about this -->
       `)}
     </div>
     `;

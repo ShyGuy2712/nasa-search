@@ -6,12 +6,16 @@ export class NasaImage extends LitElement {
     super();
     this.title = '';
     this.source = '';
+    this.imgLink = '#';
+    this.imgAltText = '';
   }
 
   static get properties() {
     return {
         source: { type: String },
         title: { type: String },
+        imgLink: { type: String },
+        imgAltText: { type: String },
     };
   }
 
@@ -20,19 +24,24 @@ export class NasaImage extends LitElement {
     
 
     .image {
-    display: inline-block;
+      display: inline-block;
     }
 
     .image div {
-    max-width: 200px;
-    font-size: 16px;
-    font-weight: bold;
+      display: inline-block;
+      max-width: 240px;
+      font-size: 16px;
+      font-weight: bold;
     }
 
     .image img {
-    display: block;
-    width: 200px;
-    height: 200px;
+      display: block;
+      width: 240px;
+      height: 240px;
+    }
+
+    .image:hover {
+      background-color: grey;  /* needs to be DDD colors */
     }
 
     `];
@@ -41,7 +50,9 @@ export class NasaImage extends LitElement {
   render() {
     return html`
     <div class="image">
-        <img src="${this.source}" />
+      <a href= ${this.imgLink}>     
+        <img src="${this.source}" alt=${this.imgAltText} />
+      </a>
         <div>${this.title}</div>
     </div>
     `;
