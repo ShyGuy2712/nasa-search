@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 export class NasaImage extends LitElement {
 
@@ -8,6 +9,7 @@ export class NasaImage extends LitElement {
     this.source = '';
     this.imgLink = '#';
     this.imgAltText = '';
+    this.owner = '';
   }
 
   static get properties() {
@@ -16,32 +18,52 @@ export class NasaImage extends LitElement {
         title: { type: String },
         imgLink: { type: String },
         imgAltText: { type: String },
+        owner: { type: String },
     };
   }
 
   static get styles() {
     return [css`
-    
 
-    .image {
-      display: inline-block;
+    a {
+      text-decoration: none;
     }
 
-    .image div {
+    .nasaCard {
       display: inline-block;
-      max-width: 240px;
-      font-size: 16px;
+      width: 240px;
+      height: 240px;
+      background-color: var(--ddd-theme-default-slateMaxLight);
+      padding: var(---ddd-spacing-m4);
+      margin: 8px;
+      border: 2px solid black;
+      border-radius: var(--ddd-radius-sm);
+      overflow: auto;
+      color: var(--ddd-theme-default-coalyGray);
+    }
+
+    .nasaCard div {
+      display: inline-block;
+      font-size: 8px;
       font-weight: bold;
     }
 
-    .image img {
-      display: block;
-      width: 240px;
-      height: 240px;
+    .nasaCard h1 {
+      font-size: 24px;
     }
 
-    .image:hover {
-      background-color: grey;  /* needs to be DDD colors */
+    .nasaCard img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 8px;
+      width: 200px;
+      height: 200px;
+
+    }
+
+    .nasaCard:hover {
+      background-color: var(--ddd-theme-default-limestoneGray);
     }
 
     `];
@@ -49,12 +71,13 @@ export class NasaImage extends LitElement {
 
   render() {
     return html`
-    <div class="image">
-      <a href= ${this.imgLink} target="_blank">     
+    <a href= ${this.imgLink} target="_blank">
+      <div class="nasaCard">
         <img src="${this.source}" alt=${this.imgAltText} />
-      </a>
-        <div>${this.title}</div>
-    </div>
+        <h1>${this.title}</h1>
+        <slot>Owner: ${this.owner}</slot>
+      </div>
+    </a>
     `;
   }
   static get tag() {

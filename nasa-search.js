@@ -59,7 +59,7 @@ export class NasaSearch extends LitElement {
     return html`
     <h2>${this.title}</h2>
     <details open>
-      <summary>Search inputs</summary>
+      <summary>Search input</summary>
       <div>
         <input id="input" placeholder="Search NASA images" @input="${this.inputChanged}" />   <!-- Add a button here, which calls "inputChanged" so NASA doesnt ban us -->
       </div>
@@ -70,9 +70,10 @@ export class NasaSearch extends LitElement {
       <nasa-image
         source="${item.links[0].href}"
         title="${item.data[0].title}"
-        imgAltTesxt="${item.data[0].description}"
-        imgLink="${item.links[0].href}"          
-      ></nasa-image>                                                             <!-- imgLink doesn't really work, ask about this -->
+        imgAltText="${item.data[0].description}"
+        imgLink="${item.links[0].href}"
+        owner="${item.data[0].secondary_creator}"          
+      ></nasa-image>
       `)}
     </div>
     `;
