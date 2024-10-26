@@ -56,7 +56,7 @@ export class NasaImage extends LitElement {
       display: block;
       margin-left: auto;
       margin-right: auto;
-      padding: 8px;
+      padding: 16px;
       width: 200px;
       height: 200px;
 

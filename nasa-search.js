@@ -43,7 +43,17 @@ export class NasaSearch extends LitElement {
         font-size: 20px;
         line-height: 40px;
         width: 100%;
+        background-color: var(--ddd-theme-default-slateMaxLight);
       }
+      #searchButton {
+        font-size: 20px;
+        color: #6c6f70;
+        background-color: var(--ddd-theme-default-slateMaxLight);
+        padding: var(---ddd-spacing-m4);
+        margin: 8px;
+        margin-left: 0px;
+      }
+
     `;
   }
 
@@ -61,7 +71,8 @@ export class NasaSearch extends LitElement {
     <details open>
       <summary>Search input</summary>
       <div>
-        <input id="input" placeholder="Search NASA images" @input="${this.inputChanged}" />   <!-- Add a button here, which calls "inputChanged" so NASA doesnt ban us -->
+        <input id="input" placeholder="Search NASA images" /> 
+        <button id="searchButton" @click=${this.inputChanged}>Search</button>     <!-- search button so NASA doesn't ban the user -->
       </div>
     </details>
     <div class="results">
